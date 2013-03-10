@@ -19,7 +19,8 @@ function hello_block_view($delta = '') {
     case 'hello':
       $block['subject'] = t('Hello World');
       
-      $content = "Hello world.";
+      global $user;
+      $content = t("Hello @name.", array('@name' => $user->name));
       
       $block['content'] = $content;
       break;
