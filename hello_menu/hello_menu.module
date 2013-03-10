@@ -17,6 +17,7 @@ function hello_menu_menu() {
     'page callback' => 'hello_menu_simple_hello',
     'access arguments' => array('access content'),
     'menu_name' => 'main-menu',
+    'weight' => 2,
   );
   
   return $items;
