@@ -53,7 +53,19 @@ function hello_menu_menu() {
     'type' => MENU_LOCAL_ACTION,
   );
   
+  $items['hello/variables/delete'] = array(
+    'title' => 'Delete Variable',
+    'description' => 'Delete system variable',
+    'page callback' => 'hello_menu_delete_variable',
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+  
   return $items;
+}
+
+function hello_menu_delete_variable() {
+  return t('Here is where we delete variables.');
 }
 
 function hello_menu_create_variable() {
