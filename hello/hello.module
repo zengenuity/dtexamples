@@ -19,6 +19,8 @@ function hello_block_view($delta = '') {
     case 'hello':
       $block['subject'] = t('Hello World');
       
+      
+      
       $hour = date('G');
       $greeting = '';
       if ($hour < 12) {
@@ -30,7 +32,20 @@ function hello_block_view($delta = '') {
       else {
         $greeting = t('Good evening @name!');
       }
-      $block['content'] = t($greeting, array('@name' => $GLOBALS['user']->name));
+      $block['content'] = '<p>' . t($greeting, array('@name' => $GLOBALS['user']->name)) . '</p>';
+      
+      if (module_exists('devel')) {
+        dpm($_GET);
+        dpm(arg(0));
+        dpm(arg(1));
+      }
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $block['content'] .= '<p>' . t('You are on a node page.') . '</p>';
+      }
+      if (arg(0) == 'user' && is_numeric(arg(1))) {
+        $block['content'] .= '<p>' . t('You are on a user page.') . '</p>';
+      }
+      
       
       break;
   }
