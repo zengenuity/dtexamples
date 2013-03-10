@@ -1,0 +1,20 @@
+<?php
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+function node_limit_menu_alter(&$items) {
+  $items['node/%node/edit']['title'] = 'Update';
+  $items['node/%node/edit']['weight'] = -1;
+  $items['node/%node/edit']['access callback'] = 'node_limit_node_access';
+}
+
+function node_limit_node_access($op, $node) {
+  if ($node->changed > (REQUEST_TIME - 15 * 60)) {
+    return node_access($op, $node);
+  }
+  return FALSE;
+}
