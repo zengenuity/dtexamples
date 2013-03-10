@@ -16,6 +16,7 @@ function hello_menu_menu() {
     'title' => 'Hello World',
     'page callback' => 'hello_menu_simple_hello',
     'access arguments' => array('access content'),
+    'menu_name' => 'main-menu',
   );
   
   return $items;
