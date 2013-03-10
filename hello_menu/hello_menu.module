@@ -20,20 +20,26 @@ function hello_menu_menu() {
     'weight' => 2,
   );
   
-  $items['variables'] = array(
+  $items['hello/simple'] = array(
+    'title' => 'Simple',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+  
+  $items['hello/variables'] = array(
     'title' => 'Hello Variables',
     'description' => 'Print the values of system variables',
     'page callback' => 'hello_menu_list_variables',
     'access arguments' => array('access content'),
     'menu_name' => 'navigation',
+    'type' => MENU_LOCAL_TASK,
     'weight' => 3,
   );
   
-  $items['variables/%'] = array(
+  $items['hello/variables/%'] = array(
     'title callback' => 'hello_menu_show_variable_title',
-    'title arguments' => array(1),
+    'title arguments' => array(2),
     'page callback' => 'hello_menu_show_variable',
-    'page arguments' => array(1),
+    'page arguments' => array(2),
     'access arguments' => array('access content'),
     'menu_name' => 'navigation',
     'weight' => 4,
@@ -59,7 +65,7 @@ function hello_menu_list_variables() {
   $names = array_keys($variables);
   $output = '<ul>';
   foreach ($names as $name) {
-    $output .= '<li>' . l($name, 'variables/' . $name) . '</li>';
+    $output .= '<li>' . l($name, 'hello/variables/' . $name) . '</li>';
   }
   $output .= '</ul>';
   return $output;
