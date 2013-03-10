@@ -22,22 +22,28 @@ function hello_menu_menu() {
   
   $items['variables'] = array(
     'title' => 'Hello Variables',
+    'description' => 'Print the values of system variables',
     'page callback' => 'hello_menu_list_variables',
     'access arguments' => array('access content'),
     'menu_name' => 'navigation',
     'weight' => 3,
   );
   
-  $items['variables/site_name'] = array(
-    'title' => 'Hello Variables: Site Name',
+  $items['variables/%'] = array(
+    'title callback' => 'hello_menu_show_variable_title',
+    'title arguments' => array(1),
     'page callback' => 'hello_menu_show_variable',
-    'page arguments' => array('site_name'),
+    'page arguments' => array(1),
     'access arguments' => array('access content'),
     'menu_name' => 'navigation',
     'weight' => 4,
   );
   
   return $items;
+}
+
+function hello_menu_show_variable_title($variable_name) {
+  return t('Show Variable: @name', array('@name' => $variable_name));
 }
 
 function hello_menu_show_variable($variable_name) {
@@ -53,7 +59,7 @@ function hello_menu_list_variables() {
   $names = array_keys($variables);
   $output = '<ul>';
   foreach ($names as $name) {
-    $output .= '<li>' . $name . '</li>';
+    $output .= '<li>' . l($name, 'variables/' . $name) . '</li>';
   }
   $output .= '</ul>';
   return $output;
