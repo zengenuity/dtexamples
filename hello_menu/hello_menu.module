@@ -1,0 +1,30 @@
+<?php
+
+/* 
+ * @file Menu Router Examples
+ */
+
+/**
+ * Implements hook_menu()
+ * 
+ * @return array
+ */
+function hello_menu_menu() {
+  $items = array();
+  
+  $items['hello'] = array(
+    'title' => 'Hello World',
+    'page callback' => 'hello_menu_simple_hello',
+    'access arguments' => array('access content'),
+  );
+  
+  return $items;
+}
+
+/**
+ * Simple Hello World page.
+ * @return string
+ */
+function hello_menu_simple_hello() {
+  return t('Hello world!!');
+}
