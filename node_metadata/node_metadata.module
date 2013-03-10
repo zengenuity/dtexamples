@@ -8,11 +8,12 @@
 function node_metadata_menu() {
   $items = array();
   
-  $items['node-metadata/%'] = array(
+  $items['node/%/metadata'] = array(
     'title' => 'Metadata',
     'page callback' => 'node_metadata_page',
     'page arguments' => array(1),
     'access arguments' => array('access content'),
+    'type' => MENU_LOCAL_TASK,
   );
   
   return $items;
