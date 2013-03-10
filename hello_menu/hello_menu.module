@@ -31,6 +31,7 @@ function hello_menu_menu() {
   $items['variables/site_name'] = array(
     'title' => 'Hello Variables: Site Name',
     'page callback' => 'hello_menu_show_variable',
+    'page arguments' => array('site_name'),
     'access arguments' => array('access content'),
     'menu_name' => 'navigation',
     'weight' => 4,
@@ -39,8 +40,8 @@ function hello_menu_menu() {
   return $items;
 }
 
-function hello_menu_show_variable() {
-  return variable_get('site_name', t('No value for this variable'));
+function hello_menu_show_variable($variable_name) {
+  return variable_get($variable_name, t('No value for this variable'));
 }
 
 /**
