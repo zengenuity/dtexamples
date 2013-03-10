@@ -19,10 +19,19 @@ function hello_block_view($delta = '') {
     case 'hello':
       $block['subject'] = t('Hello World');
       
-      global $user;
-      $content = t("Hello @name.", array('@name' => $user->name));
+      $hour = date('G');
+      $greeting = '';
+      if ($hour < 12) {
+        $greeting = t('Good morning @name!');
+      }
+      elseif ($hour < 18) {
+        $greeting = t('Good afternoon @name!');
+      }
+      else {
+        $greeting = t('Good evening @name!');
+      }
+      $block['content'] = t($greeting, array('@name' => $GLOBALS['user']->name));
       
-      $block['content'] = $content;
       break;
   }
   
