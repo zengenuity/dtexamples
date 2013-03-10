@@ -4,3 +4,26 @@
  * @file Hello Module
  */
 
+function hello_block_info() {
+  $blocks['hello'] = array(
+    'info' => t('Hello World Block'),
+  );
+  
+  return $blocks;
+}
+
+function hello_block_view($delta = '') {
+  $block = array();
+  
+  switch($delta) {
+    case 'hello':
+      $block['subject'] = t('Hello World');
+      
+      $content = "Hello world.";
+      
+      $block['content'] = $content;
+      break;
+  }
+  
+  return $block;
+}
