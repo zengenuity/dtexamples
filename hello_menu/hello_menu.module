@@ -45,7 +45,19 @@ function hello_menu_menu() {
     'weight' => 4,
   );
   
+  $items['hello/variables/create'] = array(
+    'title' => 'Create Variable',
+    'description' => 'Create system variable',
+    'page callback' => 'hello_menu_create_variable',
+    'access arguments' => array('access content'),
+    'type' => MENU_LOCAL_ACTION,
+  );
+  
   return $items;
+}
+
+function hello_menu_create_variable() {
+  return t('Here is where we create variables.');
 }
 
 function hello_menu_show_variable_title($variable_name) {
