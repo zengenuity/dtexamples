@@ -20,7 +20,24 @@ function hello_menu_menu() {
     'weight' => 2,
   );
   
+  $items['variables'] = array(
+    'title' => 'Hello Variables',
+    'page callback' => 'hello_menu_list_variables',
+    'access arguments' => array('access content'),
+    'menu_name' => 'main-menu',
+    'weight' => 3,
+  );
+  
   return $items;
+}
+
+/**
+ * Returns a list of system variables.
+ * 
+ */
+function hello_menu_list_variables() {
+  $variables = variable_initialize();
+  return kpr($variables, TRUE);
 }
 
 /**
