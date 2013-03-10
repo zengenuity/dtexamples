@@ -8,7 +8,7 @@
 function node_metadata_menu() {
   $items = array();
   
-  $items['node/%/metadata'] = array(
+  $items['node/%node/metadata'] = array(
     'title' => 'Metadata',
     'page callback' => 'node_metadata_page',
     'page arguments' => array(1),
@@ -19,8 +19,7 @@ function node_metadata_menu() {
   return $items;
 }
 
-function node_metadata_page($nid) {
-  $node = node_load($nid);
+function node_metadata_page($node) {
   $output = '';
   $output .= '<div><label>Author:</label> ' .  $node->name . '</div>';
   $output .= '<div><label>Created:</label>' . format_date($node->created) . '</div>';
