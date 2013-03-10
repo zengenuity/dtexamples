@@ -37,7 +37,13 @@ function hello_menu_menu() {
  */
 function hello_menu_list_variables() {
   $variables = variable_initialize();
-  return kpr($variables, TRUE);
+  $names = array_keys($variables);
+  $output = '<ul>';
+  foreach ($names as $name) {
+    $output .= '<li>' . $name . '</li>';
+  }
+  $output .= '</ul>';
+  return $output;
 }
 
 /**
