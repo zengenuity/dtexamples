@@ -16,7 +16,7 @@ function hello_menu_menu() {
     'title' => 'Hello World',
     'page callback' => 'hello_menu_simple_hello',
     'access arguments' => array('access content'),
-    'menu_name' => 'main-menu',
+    'menu_name' => 'navigation',
     'weight' => 2,
   );
   
@@ -24,7 +24,7 @@ function hello_menu_menu() {
     'title' => 'Hello Variables',
     'page callback' => 'hello_menu_list_variables',
     'access arguments' => array('access content'),
-    'menu_name' => 'main-menu',
+    'menu_name' => 'navigation',
     'weight' => 3,
   );
   
@@ -32,7 +32,7 @@ function hello_menu_menu() {
     'title' => 'Hello Variables: Site Name',
     'page callback' => 'hello_menu_show_variable',
     'access arguments' => array('access content'),
-    'menu_name' => 'main-menu',
+    'menu_name' => 'navigation',
     'weight' => 4,
   );
   
